@@ -8,6 +8,9 @@ import (
 
 func RegisterRoutes(r *gin.Engine) {
 	r.POST("/login", controllers.LoginHandler)
+	r.GET("/movies", controllers.GetMovies)
+	r.GET("/movies/:id", controllers.GetMovieByID)
+	r.POST("/movies", controllers.CreateMovie)
 
 	protected := r.Group("/api")
 	protected.Use(middlewares.JWTAuthMiddleware())
