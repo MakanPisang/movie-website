@@ -12,6 +12,7 @@ func RegisterRoutes(r *gin.Engine) {
 	r.GET("/movies/:id", controllers.GetMovieByID)
 	r.POST("/movies", controllers.CreateMovie)
 	r.PUT("/movies/:id", controllers.UpdateMovie)
+	r.DELETE("/movies/:id", controllers.DeleteMovie)
 
 	protected := r.Group("/api")
 	protected.Use(middlewares.JWTAuthMiddleware())
