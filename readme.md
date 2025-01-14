@@ -73,7 +73,7 @@ MovieFlix is a movie streaming website built with Golang, utilizing the Gin fram
 Feel free to reach out if you have any questions or feedback:
 
 - Email: dputro18@gmail.com
-- GitHub: [MakanPisang](https://github.com/yourusername)
+- GitHub: [MakanPisang](https://github.com/MakanPisang)
 
 ---
 
