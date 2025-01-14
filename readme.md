@@ -58,8 +58,6 @@ MovieFlix is a movie streaming website built with Golang, utilizing the Gin fram
 6. Access the application:
    Open your browser and go to `http://localhost:8080`.
 
-## API Endpoints
-
 ### Authentication
 
 - **POST /auth/register**: Register a new user.
