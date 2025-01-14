@@ -20,7 +20,7 @@ func GetMovieByID(c *gin.Context) {
 	}
 
 	if err := models.DB.First(&movie, movieID).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Movie not found"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 

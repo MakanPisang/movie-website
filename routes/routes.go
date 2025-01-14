@@ -10,13 +10,10 @@ func RegisterRoutes(r *gin.Engine) {
 	r.POST("/login", controllers.LoginHandler)
 	r.GET("/movies", controllers.GetMovies)
 	r.GET("/movies/:id", controllers.GetMovieByID)
-	r.POST("/movies", controllers.CreateMovie)
-	r.PUT("/movies/:id", controllers.UpdateMovie)
-	r.DELETE("/movies/:id", controllers.DeleteMovie)
 
-	protected := r.Group("/api")
-	protected.Use(middlewares.JWTAuthMiddleware())
-	protected.GET("/protected", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "You are authorized"})
-	})
+	admin := r.Group("/admin")
+	admin.Use(middlewares.JWTAuthMiddleware(), middlewares.RoleMiddleware("admin"))
+	admin.POST("/movies", controllers.CreateMovie)
+	admin.PUT("/movies/:id", controllers.UpdateMovie)
+	admin.DELETE("/movies/:id", controllers.DeleteMovie)
 }

@@ -20,11 +20,6 @@ func UpdateMovie(c *gin.Context) {
 		return
 	}
 
-	if err := models.DB.First(&movie, movieID).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Movie not found"})
-		return
-	}
-
 	if err := c.ShouldBindJSON(&movie); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -37,7 +32,7 @@ func UpdateMovie(c *gin.Context) {
 	}
 	movie.ReleaseDate = parsedDate
 
-	if err := models.DB.Save(&movie).Error; err != nil {
+	if err := models.DB.Model(&models.Movie{}).Where("id = ?", movieID).Updates(movie).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
