@@ -12,3 +12,5 @@ func main() {
 	routes.RegisterRoutes(r)
 	r.Run(":8080")
 }
+
+//testing untuk masuk ke development
